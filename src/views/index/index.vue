@@ -59,7 +59,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { computed, ref, watch, reactive, Ref } from "vue";
+import { ref } from "vue";
 import {
   Tab,
   Tabs,
