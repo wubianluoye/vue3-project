@@ -1,5 +1,16 @@
 # Vue 3 + Typescript + Vite
 
+```
+cd vue3-project
+npm install
+npm start
+```
+
+  * vant
+  * axios
+  * vue-router
+  * vuex
+
 This template should help get you started developing with Vue 3 and Typescript in Vite.
 
 ## Recommended IDE Setup
