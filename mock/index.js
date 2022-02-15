@@ -31,7 +31,7 @@ function createOrder(min = 0, max = 10) {
       name: Random.name(),
       password: Random.id(),
       type: Random.pick(types),
-      avat: Random.image('20x20', '#000000', '#fffff', 'jpg')
+      avat: Random.image("20x20", "#000000", "#fffff", "jpg"),
     };
     arr.push(obj);
   }
@@ -48,11 +48,15 @@ export default [
         password: "123456",
       };
       const flag = Mock.valid(user, res.body);
+
+      const ft = res.body.username.trim()[0].toUpperCase();
+
       if (!flag.length) {
         return {
           code: 200,
           message: "ok",
           data: {
+            avat: Random.image("100x100", "#000000", "#FFFFFF", ft),
             username: "admin",
             token: Random.guid(),
           },
