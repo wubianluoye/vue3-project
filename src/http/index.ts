@@ -30,6 +30,7 @@ http.interceptors.response.use(
   (response: AxiosResponse): AxiosPromise => {
     Toast.clear();
     if (response.status !== 200 || response.data.code !== 200) {
+      Toast.fail(response.data);
       return Promise.reject(response.data);
     }
     return Promise.resolve(response.data);
