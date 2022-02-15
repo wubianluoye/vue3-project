@@ -1,32 +1,48 @@
 <template>
-  <List class="mo">
-    <Tabs
-      v-model:active="active"
-      @change="changeTab"
-      sticky
-      color="#1989fa"
-      title-active-color="#1989fa"
-    >
-      <Grid :column-num="2" center class="grid" sticky>
-        <GridItem>
-          <template #default>
-            <span class="num">{{ total }}个</span>
-            <span class="title">账号数量</span>
-          </template>
-        </GridItem>
-        <GridItem>
-          <template #default>
-            <span class="num">{{ genTotal }}个</span>
-            <span class="title">加密账号</span>
-          </template>
-        </GridItem>
-      </Grid>
-      <Tab title="全部" name="all"></Tab>
-      <Tab title="重要" name="imp"></Tab>
-      <Tab title="游戏" name="game"></Tab>
-      <Tab title="加密" name="gen"></Tab>
-    </Tabs>
-    <div class="list">
+  <div class="mo">
+    <div class="tab van-hairline--bottom">
+      <Tabs
+        v-model:active="active"
+        @change="changeTab"
+        shrink
+        color="#1989fa"
+        title-active-color="#1989fa"
+        :sticky="false"
+      >
+        <Grid :column-num="2" center class="grid">
+          <GridItem>
+            <template #default>
+              <span class="num">{{ total }}个</span>
+              <span class="title">账号数量</span>
+            </template>
+          </GridItem>
+          <GridItem>
+            <template #default>
+              <span class="num">{{ genTotal }}个</span>
+              <span class="title">加密账号</span>
+            </template>
+          </GridItem>
+        </Grid>
+        <Tab title="全部" name="all">
+          <CellGroup>
+            <Cell
+              v-for="item in list"
+              :key="item.id"
+              :label="`id：${item.password}`"
+              :title="item.title"
+              center
+              inset
+              border
+            >
+            </Cell>
+          </CellGroup>
+        </Tab>
+        <Tab title="重要" name="imp"></Tab>
+        <Tab title="游戏" name="game"></Tab>
+        <Tab title="加密" name="gen"></Tab>
+      </Tabs>
+    </div>
+    <List class="list">
       <CellGroup>
         <Cell
           v-for="item in list"
@@ -39,8 +55,8 @@
         >
         </Cell>
       </CellGroup>
-    </div>
-  </List>
+    </List>
+  </div>
 </template>
 <script lang="ts" setup>
 import { computed, ref, watch, reactive, Ref } from "vue";
@@ -76,8 +92,19 @@ function glist(type: string) {
 </script>
 <style scoped lang="scss">
 .mo {
-  span {
-    color: red;
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+  padding-bottom: 50px;
+  padding-top: 112px;
+  .tab {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 110px;
+    width: 100%;
+    z-index: 1;
+    overflow: hidden;
   }
   .grid {
     .num {
@@ -88,11 +115,6 @@ function glist(type: string) {
       color: #999;
       font-size: 12px;
     }
-  }
-  .list {
-    height: calc(100vh - 120px);
-    padding-bottom: 54px;
-    overflow-y: auto;
   }
 }
 </style>
