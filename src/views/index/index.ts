@@ -1,8 +1,9 @@
-import http from '../../http/index'
-export function getList(type:string) {
-  return http.get('/list', {
+import http from "../../http/index";
+export function getList(type: string) {
+  const query = {
     params: {
-      type
-    }
-  }).then(res=> res.data)
+      type,
+    },
+  };
+  return http.get("/list", query).then((res) => res.data);
 }
