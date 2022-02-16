@@ -2,8 +2,8 @@ import http from "../../http/index";
 
 interface loginForm {
   username: string;
-  password: string | number;
-  checkPsd?: string | number;
+  password: string;
+  checkPsd?: string;
 }
 
 export function login(loginForm: loginForm) {
