@@ -121,7 +121,8 @@ const route = useRoute();
 
 const store = useStore();
 
-const tabActive = ref(route.name);
+const cname = route.name as string || '';
+const tabActive = ref(cname);
 
 const loginForm = reactive({
   username: "admin",
