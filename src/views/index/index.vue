@@ -72,7 +72,13 @@ import {
 } from "vant";
 import { getList } from "./index";
 
-let list = ref([]);
+interface Item {
+  title: string
+  id: number
+  password: string
+}
+
+let list = ref<Item[]>([]);
 let total = ref(0);
 let genTotal = ref(0);
 
